@@ -1,6 +1,8 @@
 name: build sun50iw6p1 uboot
 
 on:
+  push:
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:

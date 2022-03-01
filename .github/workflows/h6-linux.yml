@@ -1,8 +1,6 @@
 name: build sun50iw6p1 linux
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
