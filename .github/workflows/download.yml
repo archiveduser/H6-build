@@ -1,0 +1,28 @@
+name: Download Source Pack
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Download And Push
+        run: |
+          git config --global user.email "kamino@imea.me"
+          git config --global user.name "kamino"
+          echo "downloading H6-lichee-v1.1.tar.gz"
+          if [ -d "H6-lichee-v1.1" ]; then
+            rm -rf H6-lichee-v1.1
+          fi
+          mkdir H6-lichee-v1.1
+          cd H6-lichee-v1.1
+          wget --no-check-certificate -c -q -t 20 -T 20 https://dl.linux-sunxi.org/H6/H6-lichee-v1.1.tar.gz
+          split -d -b 1000m H6-lichee-v1.1.tar.gz
+          rm H6-lichee-v1.1.tar.gz
+          cd ..
+          git add H6-lichee-v1.1
+          git commit -m "download H6-lichee-v1.1.tar.gz" || true
+          git push origin main

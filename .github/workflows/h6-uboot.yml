@@ -1,0 +1,41 @@
+name: build sun50iw6p1 uboot
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Show System Info
+        run: |
+          uname -a
+          sudo free -h
+          sudo df -h
+          sudo fdisk -l 
+          sudo cat /proc/cpuinfo
+          
+      - name: Install Packages
+        run: bash install.sh
+        
+      - name: Get Source
+        run: |
+          echo "download source"
+          wget --no-check-certificate -q -t 20 -T 20 https://dl.linux-sunxi.org/H6/H6-lichee-v1.1.tar.gz
+          echo "extract source"
+          tar -zxf H6-lichee-v1.1.tar.gz
+    
+      - name: Run Build Test
+        run: |
+          cd lichee/
+          echo "start build"
+          ./build.sh -p sun50iw6p1 -a arm64 -k linux-3.10 -b petrel-p1 -m uboot  -c 7.x
+
+      - name: Run Build Uboot
+        run: |
+          cd lichee/brandy/u-boot-2014.07/
+          make sun50iw6p1_config
+          make
+
