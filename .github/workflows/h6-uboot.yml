@@ -40,3 +40,8 @@ jobs:
           make sun50iw6p1_config
           make
 
+      - name: Upload Build Result
+        uses: actions/upload-artifact@v2
+        with:
+          name: sun50iw6p1_uboot
+          path: tools/pack/chips/sun50iw6p1/
