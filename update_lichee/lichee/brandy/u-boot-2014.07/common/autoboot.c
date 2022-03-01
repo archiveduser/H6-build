@@ -227,8 +227,8 @@ static int abortboot(int bootdelay)
 
 const char *bootdelay_process(void)
 {
-	char *s = "60";
-	int bootdelay  = 60;
+	char *s;
+	int bootdelay;
 #ifdef CONFIG_BOOTCOUNT_LIMIT
 	unsigned long bootcount = 0;
 	unsigned long bootlimit = 0;
@@ -243,7 +243,8 @@ const char *bootdelay_process(void)
 #endif /* CONFIG_BOOTCOUNT_LIMIT */
 
 	//s = getenv("bootdelay");
-	//bootdelay = s ? (int)simple_strtol(s, NULL, 10) : CONFIG_BOOTDELAY;
+	s = "-1";
+	bootdelay = s ? (int)simple_strtol(s, NULL, 10) : CONFIG_BOOTDELAY;
 
 #ifdef CONFIG_OF_CONTROL
 //	bootdelay = fdtdec_get_config_int(gd->fdt_blob, "bootdelay",
