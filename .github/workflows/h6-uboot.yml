@@ -18,7 +18,7 @@ jobs:
           sudo cat /proc/cpuinfo
           
       - name: Install Packages
-        run: bash install.sh
+        run: bash init.sh
         
       - name: Get Source
         run: |
@@ -35,6 +35,7 @@ jobs:
 
       - name: Run Build Uboot
         run: |
+          cp update_lichee/lichee/* lichee/ -rf
           cd lichee/brandy/u-boot-2014.07/
           make sun50iw6p1_config
           make
