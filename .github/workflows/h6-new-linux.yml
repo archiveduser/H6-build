@@ -22,7 +22,7 @@ jobs:
       - name: Get Source
         run: |
           echo "download source"
-          wget --no-check-certificate -q -t 20 -T 20 https://files.pine64.org/SDK/PINE-H64/PINE%20H64B%20BSP%204.9%20lichee.tar.xz
+          wget --no-check-certificate -t 20 -T 20 https://files.pine64.org/SDK/PINE-H64/PINE%20H64B%20BSP%204.9%20lichee.tar.xz
           echo "extract source"
           xz -d "PINE H64B BSP 4.9 lichee.tar.xz"
           tar -zxf "PINE H64B BSP 4.9 lichee.tar"
