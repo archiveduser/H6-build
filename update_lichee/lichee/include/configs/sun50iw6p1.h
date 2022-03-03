@@ -18,7 +18,7 @@
 #define __KERNEL__
 #endif
 
-//#define DEBUG
+#define DEBUG
 
 //#define FPGA_PLATFORM
 #define LINUX_MACHINE_ID        4137
@@ -260,7 +260,7 @@
 #define CONFIG_SYS_LONGHELP				/* undef to save memory */
 #define CONFIG_SYS_HUSH_PARSER			/* use "hush" command parser	*/
 #define CONFIG_SYS_PROMPT_HUSH_PS2	"> "
-#define CONFIG_SYS_PROMPT		"sunxi#"
+#define CONFIG_SYS_PROMPT		"kamino#"
 #define CONFIG_SYS_CBSIZE	256			/* Console I/O Buffer Size */
 #define CONFIG_SYS_PBSIZE	384			/* Print Buffer Size */
 #define CONFIG_SYS_MAXARGS	16			/* max number of command args */
@@ -285,7 +285,7 @@
 #define CONFIG_SYS_NO_FLASH
 
 #define CONFIG_SYS_MONITOR_LEN		(256 << 10)	/* 256 KiB */
-#define CONFIG_IDENT_STRING			" Allwinner Technology "
+#define CONFIG_IDENT_STRING			" Allwinner Technology (kamino) "
 
 #define CONFIG_ENV_IS_IN_SUNXI_FLASH	/* we store env in one partition of our nand */
 #define CONFIG_SUNXI_ENV_PARTITION		"env"	/* the partition name */
@@ -316,11 +316,11 @@
 	"boot_fastboot=fastboot\0"
 
 #define CONFIG_SUNXI_SPRITE_ENV_SETTINGS	\
-	"bootdelay=0\0" \
-	"console=ttyS1,115200\0" \
+	"bootdelay=-1\0" \
+	"console=ttyS0,115200\0" \
 
 
-#define CONFIG_BOOTDELAY	1
+#define CONFIG_BOOTDELAY	-1
 #define CONFIG_BOOTCOMMAND	"nand read 50000000 boot;boota 50000000"
 #define CONFIG_SYS_BOOT_GET_CMDLINE
 #define CONFIG_AUTO_COMPLETE
@@ -375,7 +375,7 @@
 #define CONFIG_SUNXI_MODULE_DISPLAY
 
 /*Will mv some hdmi init to boot0 to speed up logo display.*/
-//#define CONFIG_SUNXI_HDMI_IN_BOOT0
+#define CONFIG_SUNXI_HDMI_IN_BOOT0
 
 /***************************************************************
 *
@@ -422,7 +422,7 @@
 #define CONFIG_NAND
 #define CONFIG_STORAGE_NAND
 #define CONFIG_NAND_SUNXI
-//#define CONFIG_CMD_NAND                         /* NAND support */
+#define CONFIG_CMD_NAND                         /* NAND support */
 #define CONFIG_SYS_MAX_NAND_DEVICE      1
 #define CONFIG_SYS_NAND_BASE            0x00
 #endif
@@ -430,8 +430,8 @@
 #ifdef CONFIG_SUNXI_MODULE_DISPLAY
 #define CONFIG_SUNXI_DISPLAY
 #define CONFIG_VIDEO_SUNXI_V3
-//#define CONFIG_SUNXI_MODULE_HDMI
-//#define CONFIG_SUNXI_MODULE_TV
+#define CONFIG_SUNXI_MODULE_HDMI
+#define CONFIG_SUNXI_MODULE_TV
 #define CONFIG_SUNXI_MODULE_CLK
 #define CONFIG_SUNXI_MODULE_PWM
 #endif
@@ -466,7 +466,7 @@
 
 #ifdef CONFIG_SUNXI_MODULE_USB
 
-//#define CONFIG_USB_ETHER
+#define CONFIG_USB_ETHER
 #ifdef CONFIG_USB_ETHER
 /* USB SUSPORT */
 
@@ -506,7 +506,7 @@
 //#define CONFIG_SYS_DCACHE_OFF
 
 /* ethernet support */
-#define CONFIG_SUNXI_GETH rmii
+#define CONFIG_SUNXI_GETH
 #ifdef CONFIG_SUNXI_GETH
 #define CONFIG_SUNXI_EXT_PHY
 #ifdef CONFIG_USE_AC200
