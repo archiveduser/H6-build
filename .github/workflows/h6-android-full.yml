@@ -1,0 +1,52 @@
+name: build sun50iw6p1 android full
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Show System Info
+        run: |
+          uname -a
+          sudo free -h
+          sudo df -h
+          sudo fdisk -l 
+          sudo cat /proc/cpuinfo
+      - name: Install Packages
+        run: bash install.sh
+
+      - name: Get Source
+        run: |
+          echo "download source"
+          wget --no-check-certificate -q -t 20 -T 20 https://dl.linux-sunxi.org/H6/H6-lichee-v1.1.tar.gz
+          echo "extract source"
+          tar -zxf H6-lichee-v1.1.tar.gz
+          rm H6-lichee-v1.1.tar.gz
+          echo "download android"
+          wget --no-check-certificate -q -t 20 -T 20 https://dl.linux-sunxi.org/H6/H6-Android-7.1-SDK.tgz
+          echo "extract android"
+          tar -zxf H6-Android-7.1-SDK.tgz
+          rm H6-Android-7.1-SDK.tgz
+          
+          
+        
+      - name: Run Build
+        run: |
+          cd android/
+          echo "start build"
+          ./build.sh
+          
+      - name: Pack Build Result
+        run: |
+          cd lichee/out/sun50iw6p1/
+          tar -zcvf sun50iw6p1_android.tar.gz android/
+          
+      - name: Upload Build Result
+        uses: actions/upload-artifact@v2
+        with:
+          name: sun50iw6p1_android
+          path: lichee/out/sun50iw6p1/sun50iw6p1_android.tar.gz
