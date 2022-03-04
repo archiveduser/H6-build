@@ -27,12 +27,6 @@ jobs:
           tar -zxf H6-lichee-v1.1.tar.gz
           echo "copy build config"
           cp sun50iw6p1_linux_config lichee/.buildconfig
-          
-      - name: Run Build
-        run: |
-          cd lichee/
-          echo "start build"
-          ./build.sh
 
       - name: Run Pack
         run: |
