@@ -39,7 +39,6 @@ jobs:
           cd lichee/brandy/u-boot-2014.07/
           make sun50iw6p1_config
           make
-          tar zcvf u-boot-2014.07.tar.gz lichee/brandy/u-boot-2014.07/
 
       - name: Upload Build Result
         uses: actions/upload-artifact@v2
@@ -50,5 +49,5 @@ jobs:
       - name: Upload Build Source
         uses: actions/upload-artifact@v2
         with:
-          name: u-boot-2014.07.tar.gz
-          path: u-boot-2014.07.tar.gz
+          name: u-boot-2014.07
+          path: lichee/brandy/u-boot-2014.07/
