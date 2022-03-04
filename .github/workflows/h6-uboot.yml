@@ -46,8 +46,3 @@ jobs:
           name: sun50iw6p1_uboot
           path: lichee/tools/pack/chips/sun50iw6p1/
     
-      - name: Upload Build Source
-        uses: actions/upload-artifact@v2
-        with:
-          name: u-boot-2014.07
-          path: lichee/brandy/u-boot-2014.07/
