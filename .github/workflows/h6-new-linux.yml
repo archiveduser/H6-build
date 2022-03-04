@@ -27,7 +27,7 @@ jobs:
           xz -d "PINE H64B BSP 4.9 lichee.tar.xz"
           tar -xf "PINE H64B BSP 4.9 lichee.tar"
           echo "copy build config"
-          cp sun50iw6p1_linux_config lichee/.buildconfig
+          cp sun50iw6p1_new_linux_config lichee/.buildconfig
           
       - name: Run Build
         run: |
