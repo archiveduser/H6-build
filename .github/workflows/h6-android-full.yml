@@ -38,7 +38,7 @@ jobs:
         run: |
           cd android/
           echo "start build"
-          ./build.sh
+          make
           
       - name: Pack Build Result
         run: |
