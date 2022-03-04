@@ -1,0 +1,7 @@
+export LICHEE_PLATFORM=linux
+export LICHEE_CHIP=sun50iw6p1
+export LICHEE_KERN_VER=linux-4.9
+export LICHEE_ARCH=arm64
+export LICHEE_BOARD=petrel-p1
+export LICHEE_CROSS_COMPILER=aarch64-linux-gnu
+export LICHEE_TOOLCHAIN_PATH=/media/kamino/0f9776b8-2a6b-4a6c-9f51-777499b83956/lichee/out/gcc-linaro-5.3.1-2016.05/gcc-aarch64
