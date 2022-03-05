@@ -1,4 +1,4 @@
-name: build sun50iw6p1 new linux
+name: build sun50iw6p1 new uboot
 
 on:
   workflow_dispatch:
