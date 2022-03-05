@@ -1,0 +1,42 @@
+name: build sun50iw6p1 new linux
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Show System Info
+        run: |
+          uname -a
+          sudo free -h
+          sudo fdisk -l 
+          sudo cat /proc/cpuinfo
+          
+      - name: Install Packages
+        run: bash init.sh
+
+      - name: Get Source
+        run: |
+          echo "download source"
+          wget --no-check-certificate -q -t 20 -T 20 https://fileredirect.ldst.workers.dev/PINE%20H64B%20BSP%204.9%20lichee.tar.xz
+          echo "extract source"
+          xz -d "PINE H64B BSP 4.9 lichee.tar.xz"
+          tar -xf "PINE H64B BSP 4.9 lichee.tar"
+          
+      - name: Run Build
+        run: |
+          cd lichee/brandy/u-boot-2014.07/
+          echo "start pack"
+          make
+       
+      - name: Upload Build Result
+        uses: actions/upload-artifact@v2
+        with:
+          name: sun50iw6p1_uboot
+          path: lichee/tools/pack/chips/sun50iw6p1/
+    
+      
